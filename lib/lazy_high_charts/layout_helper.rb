@@ -31,7 +31,7 @@ module LazyHighCharts
         var options, chart;
         options = { #{options_collection.join(',')} };
         #{capture(&block) if block_given?}
-        chart = new Highcharts.#{type}(options);
+        window.#{placeholder.to_s} = new Highcharts.#{type}(options);
       EOJS
 
       if defined?(request) && request.respond_to?(:xhr?) && request.xhr?
